@@ -1,18 +1,16 @@
-const createRequest = require('./index').createRequest
+const sdk = require('api')('@coinbase-exchange/v1.0#1araz11kx0qhg10');
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const port = process.env.EA_PORT || 8080
-
-app.use(bodyParser.json())
+sdk['ExchangeRESTAPI_GetAccounts']()
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
 
 app.post('/', (req, res) => {
-  console.log('POST Data: ', req.body)
-  createRequest(req.body, (status, result) => {
-    console.log('Result: ', result)
-    res.status(status).json(result)
-  })
+  console.log('POST Data: ', req.body);
+  coinbase.getAccounts({}, function(err, accounts) {
+    if (err) console.log(err);
+    console.log(accounts);
+    //res.status(response.statusCode).send(response.body);
+  });
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))
