@@ -9,7 +9,11 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "@chainlink/external-adapter": "^0.2.3"
+    "@chainlink/external-adapter": "^0.2.3",
+    "api": "^4.1.1",
+    "coinbase": "^2.0.8",
+    "crypto": "^1.0.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "body-parser": "^1.19.0",
